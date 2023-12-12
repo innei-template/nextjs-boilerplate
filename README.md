@@ -8,6 +8,11 @@ The purpose is to quickly build a UI/UX prioritized frontend application.
 
 - Jotai
 - Framer Motion
+- Radix Color
+- Radix UI
+- @next-ui/theme
+- TailwindCSS
+- TanStack Query
 
 ## License
 
