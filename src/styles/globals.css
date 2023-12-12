@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 14px;
+
+  --border-color: #eee;
+  --font-sans: theme('fontFamily.sans');
+
+  --header-height: auto;
+
+  /* make app like native app in mobile */
+  -webkit-tap-highlight-color: transparent;
+  /*  for firefox */
+  scrollbar-width: thin;
+
+  font-family: var(--font-sans);
+}
+
+*:not(input):not(textarea):not([contenteditable='true']):not(
+    .no-focus-visible
+  ):focus-visible {
+  outline: 0 !important;
+  /* box-shadow: theme(colors.primary) 0px 0px 0px 2px !important; */
+}
+
+::view-transition-new(root) {
+  animation: turnOff 800ms ease-in-out;
+}
+::view-transition-old(root) {
+  animation: none;
+}
+
+@keyframes turnOn {
+  0% {
+    clip-path: polygon(0% 0%, 100% 0, 100% 0, 0 0);
+  }
+  100% {
+    clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+[data-theme='dark']::view-transition-new(root) {
+  animation: turnOn 800ms ease-in-out;
+}
+::view-transition-old(root) {
+  animation: none;
+}
+
+@keyframes turnOff {
+  0% {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+  }
+  100% {
+    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+  }
+}
