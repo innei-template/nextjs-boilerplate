@@ -1,7 +1,7 @@
 'use client'
 
-import { flushSync } from 'react-dom'
 import { useTheme } from 'next-themes'
+import { flushSync } from 'react-dom'
 import { tv } from 'tailwind-variants'
 
 import { useIsClient } from '~/hooks/common/use-is-client'
@@ -103,7 +103,7 @@ const ThemeIndicator = () => {
   if (!theme) return null
   return (
     <div
-      className="z-1 absolute top-[4px] h-[32px] w-[32px] rounded-full bg-foreground-500/10 shadow-[0_1px_2px_0_rgba(127.5,127.5,127.5,.2),_0_1px_3px_0_rgba(127.5,127.5,127.5,.1)] duration-200"
+      className="z-1 absolute top-[4px] size-[32px] rounded-full bg-foreground-500/10 shadow-[0_1px_2px_0_rgba(127.5,127.5,127.5,.2),_0_1px_3px_0_rgba(127.5,127.5,127.5,.1)] duration-200"
       style={{
         left: { light: 4, system: 36, dark: 68 }[theme],
       }}

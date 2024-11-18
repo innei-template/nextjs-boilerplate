@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 import { clsxm } from '~/lib/helper'
 
@@ -19,7 +19,7 @@ export const Loading: Component<LoadingProps> = ({
   return (
     <div
       data-hide-print
-      className={clsxm('my-20 flex flex-col center', className)}
+      className={clsxm('center flex my-20 flex-col', className)}
     >
       <span className="loading loading-ball loading-lg" />
       {!!nextLoadingText && (

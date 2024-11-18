@@ -1,6 +1,5 @@
-import { config } from 'dotenv'
-
 import NextBundleAnalyzer from '@next/bundle-analyzer'
+import { config } from 'dotenv'
 
 process.title = 'Hero (NextJS)'
 
@@ -16,14 +15,6 @@ let nextConfig = {
   assetPrefix: isProd ? env.ASSETPREFIX || undefined : undefined,
   compiler: {
     // reactRemoveProperties: { properties: ['^data-id$', '^data-(\\w+)-id$'] },
-  },
-  experimental: {
-    serverMinification: true,
-
-    // @see https://vercel.com/blog/version-skew-protection
-    useDeploymentId: true,
-    webpackBuildWorker: true,
-    useDeploymentIdServerActions: true,
   },
 
   images: {

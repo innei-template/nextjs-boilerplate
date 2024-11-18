@@ -1,8 +1,8 @@
 'use client'
 
-import { forwardRef, memo } from 'react'
-import { m } from 'framer-motion'
 import type { ForwardRefComponent, HTMLMotionProps } from 'framer-motion'
+import { m } from 'framer-motion'
+import { forwardRef, memo } from 'react'
 
 export const MotionButtonBase: ForwardRefComponent<
   HTMLButtonElement,

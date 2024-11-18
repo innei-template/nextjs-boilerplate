@@ -1,6 +1,7 @@
+import type { JSX } from 'react'
 import { createElement } from 'react'
-import { toast as Toast } from 'react-toastify'
 import type { Id, ToastOptions, TypeOptions } from 'react-toastify'
+import { toast as Toast } from 'react-toastify'
 
 import { ToastCard } from '~/components/widgets/shared/ToastCard'
 
@@ -14,25 +15,23 @@ const baseConfig = {
   closeButton: false,
 } satisfies ToastOptions
 
-interface ToastCustom {
-  (
+type ToastCustom = (
     message: string,
     type?: TypeOptions,
     options?: ToastOptions & {
       iconElement?: JSX.Element
     },
-  ): Id
-}
+  ) => Id
 
 interface CustomToastOptions {
   iconElement?: JSX.Element
   onClick?: () => void
 }
 interface ToastCustom {
-  success(message: string, options?: ToastOptions & CustomToastOptions): Id
-  info(message: string, options?: ToastOptions & CustomToastOptions): Id
-  warn(message: string, options?: ToastOptions & CustomToastOptions): Id
-  error(message: string, options?: ToastOptions & CustomToastOptions): Id
+  success: (message: string, options?: ToastOptions & CustomToastOptions) => Id
+  info: (message: string, options?: ToastOptions & CustomToastOptions) => Id
+  warn: (message: string, options?: ToastOptions & CustomToastOptions) => Id
+  error: (message: string, options?: ToastOptions & CustomToastOptions) => Id
 }
 
 // @ts-ignore

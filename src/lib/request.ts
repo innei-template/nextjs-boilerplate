@@ -8,7 +8,7 @@ import { isClientSide, isDev, isServerSide } from './env'
 
 const uuidStorageKey = 'x-uuid'
 const genUUID = () => {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replaceAll(/[xy]/g, (c) => {
     const r = (Math.random() * 16) | 0
     const v = c === 'x' ? r : (r & 0x3) | 0x8
     return v.toString(16)
@@ -16,10 +16,7 @@ const genUUID = () => {
 }
 const uuid = genUUID()
 
-if (isClientSide) {
-  if (!sessionStorage.getItem(uuidStorageKey))
-    sessionStorage.setItem(uuidStorageKey, uuid)
-}
+if (isClientSide && !sessionStorage.getItem(uuidStorageKey)) sessionStorage.setItem(uuidStorageKey, uuid)
 
 export const $axios = axios.create({
   baseURL: API_URL,

@@ -14,7 +14,7 @@ export default ({ error, reset }: any) => {
 
   return (
     <NormalContainer>
-      <div className="flex min-h-[calc(100vh-10rem)] flex-col center">
+      <div className="center flex min-h-[calc(100vh-10rem)] flex-col">
         <h2 className="mb-5">Something went wrong!</h2>
         <StyledButton variant="primary" onClick={reset}>
           Try again

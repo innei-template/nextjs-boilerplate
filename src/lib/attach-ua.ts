@@ -1,13 +1,13 @@
 import { isServer } from '@tanstack/react-query'
-import { headers } from 'next/dist/client/components/headers'
+import { headers } from 'next/headers'
 
 import { $axios } from '~/lib/request'
 
 import PKG from '../../package.json'
 
-export const attachUAAndRealIp = () => {
+export const attachUAAndRealIp = async () => {
   if (!isServer) return
-  const { get } = headers()
+  const { get } = await headers()
 
   const ua = get('user-agent')
   const ip =

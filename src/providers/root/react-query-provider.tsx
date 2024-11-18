@@ -1,12 +1,11 @@
 'use client'
 
+import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister'
 import { QueryClient } from '@tanstack/react-query'
+import type { PersistQueryClientOptions } from '@tanstack/react-query-persist-client'
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'
 import { createStore, del, get, set } from 'idb-keyval'
-import type { PersistQueryClientOptions } from '@tanstack/react-query-persist-client'
 import type { PropsWithChildren } from 'react'
-
-import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister'
 
 import { isServerSide } from '~/lib/env'
 

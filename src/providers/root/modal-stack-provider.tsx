@@ -1,6 +1,11 @@
 'use client'
 
 import * as Dialog from '@radix-ui/react-dialog'
+import type { Target, Transition } from 'framer-motion'
+import { AnimatePresence, m, useAnimationControls } from 'framer-motion'
+import { atom, useAtomValue, useSetAtom } from 'jotai'
+import { usePathname } from 'next/navigation'
+import type { FC, PropsWithChildren, SyntheticEvent } from 'react'
 import {
   createElement,
   memo,
@@ -10,11 +15,6 @@ import {
   useMemo,
   useRef,
 } from 'react'
-import { AnimatePresence, m, useAnimationControls } from 'framer-motion'
-import { atom, useAtomValue, useSetAtom } from 'jotai'
-import { usePathname } from 'next/navigation'
-import type { Target, Transition } from 'framer-motion'
-import type { FC, PropsWithChildren, SyntheticEvent } from 'react'
 
 import { useIsMobile } from '~/atoms'
 import { CloseIcon } from '~/components/icons/close'
@@ -243,7 +243,7 @@ const Modal: Component<{
         <Dialog.Content asChild>
           <div
             className={clsxm(
-              'fixed inset-0 z-[20] flex center',
+              'center flex fixed inset-0 z-[20]',
               modalContainerClassName,
             )}
             onClick={clickOutsideToDismiss ? dismiss : noticeModal}
@@ -255,7 +255,7 @@ const Modal: Component<{
               animate={animateController}
               transition={modalTransition}
               className={clsxm(
-                'relative flex flex-col overflow-hidden rounded-lg',
+                'flex relative flex-col overflow-hidden rounded-lg',
                 'bg-slate-50/80 dark:bg-neutral-900/80',
                 'p-2 shadow-2xl shadow-stone-300 backdrop-blur-sm dark:shadow-stone-800',
                 'max-h-[70vh] min-w-[300px] max-w-[90vw] lg:max-h-[calc(100vh-20rem)] lg:max-w-[70vw]',
@@ -264,12 +264,12 @@ const Modal: Component<{
               )}
               onClick={stopPropagation}
             >
-              <Dialog.Title className="flex-shrink-0 px-4 py-2 text-lg font-medium">
+              <Dialog.Title className="shrink-0 px-4 py-2 text-lg font-medium">
                 {title}
               </Dialog.Title>
-              <Divider className="my-2 flex-shrink-0 border-slate-200 opacity-80 dark:border-neutral-800" />
+              <Divider className="my-2 shrink-0 border-slate-200 opacity-80 dark:border-neutral-800" />
 
-              <div className="min-h-0 flex-shrink flex-grow overflow-auto px-4 py-2">
+              <div className="min-h-0 shrink grow overflow-auto px-4 py-2">
                 {createElement(content, ModalProps)}
               </div>
 

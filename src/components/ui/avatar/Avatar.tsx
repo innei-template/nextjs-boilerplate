@@ -1,7 +1,8 @@
 'use client'
 
-import React, { createElement, useMemo, useRef, useState } from 'react'
-import type { DetailedHTMLProps, FC, ImgHTMLAttributes } from 'react'
+import type { DetailedHTMLProps, FC, ImgHTMLAttributes,JSX  } from 'react'
+import * as React from 'react'
+import { createElement, useMemo, useRef, useState } from 'react'
 
 import { useIsDark } from '~/hooks/common/use-is-dark'
 import { getColorScheme, stringToHue } from '~/lib/color'
@@ -59,7 +60,7 @@ export const Avatar: FC<
   return (
     <div
       className={clsxm(
-        'box-border backface-hidden',
+        'backface-hidden box-border',
         shadow && 'shadow-sm',
         className,
       )}
@@ -96,7 +97,7 @@ export const Avatar: FC<
             <img
               src={imageUrl}
               style={{
-                ...{ opacity: loaded ? 1 : 0 },
+                 opacity: loaded ? 1 : 0 ,
                 ...(radius ? { borderRadius: `${radius}px` } : undefined),
               }}
               height={size}
@@ -112,7 +113,7 @@ export const Avatar: FC<
             />
           </div>
         ) : text ? (
-          <div className="relative flex h-full w-full flex-grow select-none items-center justify-center">
+          <div className="flex relative size-full grow select-none items-center justify-center">
             <FlexText scale={0.5} text={text} />
           </div>
         ) : null,

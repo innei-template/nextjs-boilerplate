@@ -1,7 +1,6 @@
-import type { Viewport } from 'next'
-
 import '~/styles/index.css'
 
+import type { Viewport } from 'next'
 import { ToastContainer } from 'react-toastify'
 
 import { HydrationEndDetector } from '~/components/common/HydrationEndDetector'
@@ -93,7 +92,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  attachUAAndRealIp()
+  await attachUAAndRealIp()
 
   return (
     <>

@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useLayoutEffect } from 'react'
-import { createPortal } from 'react-dom'
 import { atom, useAtomValue, useSetAtom } from 'jotai'
+import * as React from 'react'
+import { useLayoutEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 import { useIsClient } from '~/hooks/common/use-is-client'
 

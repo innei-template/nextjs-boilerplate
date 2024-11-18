@@ -1,18 +1,19 @@
 'use client'
 
-import { memo, useMemo } from 'react'
-import { m } from 'framer-motion'
 import type {
   HTMLMotionProps,
   Spring,
   Target,
   TargetAndTransition,
 } from 'framer-motion'
+import { m } from 'framer-motion'
 import type { FC, PropsWithChildren } from 'react'
-import type { BaseTransitionProps } from './typings'
+import { memo, useMemo } from 'react'
 
 import { isHydrationEnded } from '~/components/common/HydrationEndDetector'
 import { microReboundPreset } from '~/constants/spring'
+
+import type { BaseTransitionProps } from './typings'
 
 interface TransitionViewParams {
   from: Target

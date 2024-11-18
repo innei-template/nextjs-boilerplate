@@ -1,10 +1,11 @@
 'use client'
 
-import { flip, offset, shift, useFloating } from '@floating-ui/react-dom'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { AnimatePresence, m } from 'framer-motion'
 import type { UseFloatingOptions } from '@floating-ui/react-dom'
+import { flip, offset, shift, useFloating } from '@floating-ui/react-dom'
+import { AnimatePresence, m } from 'framer-motion'
 import type { FC, PropsWithChildren } from 'react'
+import * as React from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { microReboundPreset } from '~/constants/spring'
 import useClickAway from '~/hooks/common/use-click-away'
@@ -101,24 +102,27 @@ export const FloatPopover = function FloatPopover<T extends {}>(
       // onBlur: doPopoverDisappear,
     }
     switch (trigger) {
-      case 'click':
+      case 'click': {
         return {
           ...baseListener,
           onClick: doPopoverShow,
         }
-      case 'hover':
+      }
+      case 'hover': {
         return {
           ...baseListener,
           onMouseOver: doPopoverShow,
           onMouseOut: doPopoverDisappear,
         }
-      case 'both':
+      }
+      case 'both': {
         return {
           ...baseListener,
           onClick: doPopoverShow,
           onMouseOver: doPopoverShow,
           onMouseOut: handleMouseOut,
         }
+      }
     }
   }, [doPopoverDisappear, doPopoverShow, handleMouseOut, trigger])
 

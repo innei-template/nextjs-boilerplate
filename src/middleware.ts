@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
 
 import {
   REQUEST_GEO,
@@ -33,7 +33,7 @@ export default async function middleware(req: NextRequest) {
 
   if (
     pathname.startsWith('/api/') ||
-    pathname.match(/^\/(workbox|worker|fallback)-\w+\.js(\.map)?$/) ||
+    /^\/(workbox|worker|fallback)-\w+\.js(\.map)?$/.test(pathname) ||
     pathname === '/sw.js' ||
     pathname === '/sw.js.map'
   ) {

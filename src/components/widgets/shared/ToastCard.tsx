@@ -2,7 +2,7 @@
 
 import clsx from 'clsx'
 import { m } from 'framer-motion'
-import type { FC } from 'react'
+import type { FC, JSX } from 'react'
 import type { ToastProps, TypeOptions } from 'react-toastify/dist/types'
 
 import { MotionButtonBase } from '../../ui/button'
@@ -37,8 +37,8 @@ export const ToastCard: FC<{
         'space-x-4',
         'flex items-center',
         'select-none',
-        '[&>i]:flex-shrink-0',
-        '[&>svg]:flex-shrink-0',
+        '[&>i]:shrink-0',
+        '[&>svg]:shrink-0',
       )}
       onClick={onClick}
     >
@@ -47,7 +47,7 @@ export const ToastCard: FC<{
 
       <MotionButtonBase
         aria-label="Close toast"
-        className="absolute bottom-0 right-3 top-0 flex items-center text-sm text-foreground/40 duration-200 hover:text-foreground/80"
+        className="flex absolute inset-y-0 right-3 items-center text-sm text-foreground/40 duration-200 hover:text-foreground/80"
         onClick={(e) => {
           e.stopPropagation()
           closeToast?.()

@@ -1,5 +1,6 @@
-import React, { useCallback, useInsertionEffect, useRef } from 'react'
 import type { FC } from 'react'
+import * as React from 'react'
+import { useCallback, useInsertionEffect, useRef } from 'react'
 
 import { useIsPrintMode } from '~/atoms/css-media'
 import { useIsDark } from '~/hooks/common/use-is-dark'
@@ -52,11 +53,9 @@ export const HighLighter: FC<Props> = (props) => {
       'https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.css',
     )
 
-    Promise.all([
-      loadScript(
-        'https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/prism/1.23.0/components/prism-core.min.js',
-      ),
-    ])
+    loadScript(
+      'https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/prism/1.23.0/components/prism-core.min.js',
+    )
       .then(() =>
         Promise.all([
           loadScript(

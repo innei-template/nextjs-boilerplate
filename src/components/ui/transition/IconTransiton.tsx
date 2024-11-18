@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
 import { useAnimationControls } from 'framer-motion'
-import type { FC } from 'react'
+import type { FC,JSX  } from 'react'
+import * as React from 'react'
+import { useEffect, useState } from 'react'
 
 import { FadeInOutTransitionView } from '~/components/ui/transition/FadeInOutTransitionView'
 

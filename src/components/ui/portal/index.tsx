@@ -1,5 +1,5 @@
-import { createPortal } from 'react-dom'
 import type { FC, PropsWithChildren } from 'react'
+import { createPortal } from 'react-dom'
 
 import { useIsClient } from '~/hooks/common/use-is-client'
 

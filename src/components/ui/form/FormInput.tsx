@@ -1,9 +1,8 @@
-import { memo, useCallback, useEffect, useRef } from 'react'
 import { produce } from 'immer'
 import { useAtomValue } from 'jotai'
 import { selectAtom } from 'jotai/utils'
 import type { DetailedHTMLProps, FC, InputHTMLAttributes } from 'react'
-import type { FormFieldBaseProps } from './types'
+import { memo, useCallback, useEffect, useRef } from 'react'
 
 import { AutoResizeHeight } from '~/components/widgets/shared/AutoResizeHeight'
 import { clsxm } from '~/lib/helper'
@@ -11,6 +10,7 @@ import { jotaiStore } from '~/lib/store'
 
 import { Input } from '../input'
 import { useForm, useFormConfig } from './FormContext'
+import type { FormFieldBaseProps } from './types'
 
 export const FormInput: FC<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> &
@@ -37,7 +37,7 @@ export const FormInput: FC<
     ),
   )
   useEffect(() => {
-    const name = rest.name
+    const {name} = rest
     if (!rules) return
     if (!name) return
 

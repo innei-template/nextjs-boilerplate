@@ -1,12 +1,12 @@
-import { withTV } from 'tailwind-variants/transformer'
-import { createPlugin } from 'windy-radix-palette'
-import type { Config } from 'tailwindcss'
-import type { PluginAPI } from 'tailwindcss/types/config'
+import './plugins/css-plugin'
 
 import { addDynamicIconSelectors } from '@iconify/tailwind'
 import { nextui } from '@nextui-org/theme'
 import radxiColors from '@radix-ui/colors'
 import typography from '@tailwindcss/typography'
+import { withTV } from 'tailwind-variants/transformer'
+import type { Config } from 'tailwindcss'
+import { createPlugin } from 'windy-radix-palette'
 
 const twConfig: Config = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
@@ -46,7 +46,6 @@ const twConfig: Config = {
 
   plugins: [
     addDynamicIconSelectors(),
-    addShortcutPlugin,
 
     typography,
 
@@ -90,33 +89,8 @@ const twConfig: Config = {
         },
       },
     }),
+    require('./layer.css'),
   ],
-}
-
-function addShortcutPlugin({ addUtilities }: PluginAPI) {
-  const styles = {
-    '.content-auto': {
-      'content-visibility': 'auto',
-    },
-    '.shadow-out-sm': {
-      'box-shadow':
-        '0 0 10px rgb(120 120 120 / 10%), 0 5px 20px rgb(120 120 120 / 20%)',
-    },
-    '.backface-hidden': {
-      '-webkit-backface-visibility': 'hidden',
-      '-moz-backface-visibility': 'hidden',
-      '-webkit-transform': 'translate3d(0, 0, 0)',
-      '-moz-transform': 'translate3d(0, 0, 0)',
-    },
-    '.center': {
-      'align-items': 'center',
-      'justify-content': 'center',
-    },
-    '.fill-content': {
-      'min-height': `calc(100vh - 17.5rem)`,
-    },
-  }
-  addUtilities(styles)
 }
 
 export default withTV(twConfig)

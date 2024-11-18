@@ -1,5 +1,5 @@
-import React from 'react'
 import type { DetailedHTMLProps, FC, HTMLAttributes } from 'react'
+import * as React from 'react'
 
 import { clsxm } from '~/lib/helper'
 

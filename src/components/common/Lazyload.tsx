@@ -1,9 +1,10 @@
 'use client'
 
-import React, { useEffect } from 'react'
-import { useInView } from 'react-intersection-observer'
 import type { FC, PropsWithChildren } from 'react'
+import * as React from 'react'
+import { useEffect } from 'react'
 import type { IntersectionOptions } from 'react-intersection-observer'
+import { useInView } from 'react-intersection-observer'
 
 export type LazyLoadProps = {
   offset?: number

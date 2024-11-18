@@ -1,8 +1,8 @@
 'use client'
 
-import * as React from 'react'
-import { AnimatePresence, m } from 'framer-motion'
 import type { Variants } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
+import * as React from 'react'
 
 import { microReboundPreset } from '~/constants/spring'
 import { clsxm } from '~/lib/helper'

@@ -1,9 +1,8 @@
 'use client'
 
-import { ReactQueryProvider } from './react-query-provider'
 import { LazyMotion } from 'framer-motion'
 import { ThemeProvider } from 'next-themes'
-import type { PropsWithChildren } from 'react'
+import type { JSX, PropsWithChildren } from 'react'
 
 import { ProviderComposer } from '../../components/common/ProviderComposer'
 import { DebugProvider } from './debug-provider'
@@ -11,6 +10,7 @@ import { EventProvider } from './event-provider'
 import { JotaiStoreProvider } from './jotai-provider'
 import { ModalStackProvider } from './modal-stack-provider'
 import { PageScrollInfoProvider } from './page-scroll-info-provider'
+import { ReactQueryProvider } from './react-query-provider'
 
 const loadFeatures = () =>
   import('./framer-lazy-feature').then((res) => res.default)

@@ -5,18 +5,23 @@ import { REQUEST_HOST } from '~/constants/system'
 import { isDev } from './env'
 
 export function escapeXml(unsafe: string) {
-  return unsafe.replace(/[<>&'"]/g, (c) => {
+  return unsafe.replaceAll(/[<>&'"]/g, (c) => {
     switch (c) {
-      case '<':
+      case '<': {
         return '&lt;'
-      case '>':
+      }
+      case '>': {
         return '&gt;'
-      case '&':
+      }
+      case '&': {
         return '&amp;'
-      case "'":
+      }
+      case "'": {
         return '&apos;'
-      case '"':
+      }
+      case '"': {
         return '&quot;'
+      }
     }
     return c
   })

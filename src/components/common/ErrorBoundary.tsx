@@ -1,15 +1,14 @@
 'use client'
 
-import { ErrorBoundary as ErrorBoundaryLib } from 'react-error-boundary'
 import type { FC, PropsWithChildren } from 'react'
+import { ErrorBoundary as ErrorBoundaryLib } from 'react-error-boundary'
 
 // import { captureException } from '@sentry/nextjs'
-
 import { StyledButton } from '../ui/button'
 
 const FallbackComponent = () => {
   return (
-    <div className="flex w-full flex-col py-6 center">
+    <div className="center flex w-full flex-col py-6">
       Something went wrong. Please contract to{' '}
       <a href="mailto:i@innei.ren" className="shiro-link--underline">
         i@innei.ren

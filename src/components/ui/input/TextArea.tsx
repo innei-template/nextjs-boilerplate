@@ -1,10 +1,10 @@
-import { forwardRef, useCallback } from 'react'
 import { m, useMotionTemplate, useMotionValue } from 'framer-motion'
 import type {
   DetailedHTMLProps,
   PropsWithChildren,
   TextareaHTMLAttributes,
 } from 'react'
+import { forwardRef, useCallback } from 'react'
 
 import { useIsMobile } from '~/atoms'
 import { useInputComposition } from '~/hooks/common/use-input-composition'
@@ -39,7 +39,7 @@ export const TextArea = forwardRef<
     >
       {!isMobile && (
         <m.div
-          className="pointer-events-none absolute left-0 right-0 top-0 z-0 h-[150px] rounded-xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[150px] rounded-xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           style={{ background }}
           aria-hidden="true"
         />

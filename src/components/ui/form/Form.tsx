@@ -1,4 +1,3 @@
-import { useCallback, useMemo } from 'react'
 import { produce } from 'immer'
 import { atom } from 'jotai'
 import type {
@@ -6,12 +5,13 @@ import type {
   FormHTMLAttributes,
   PropsWithChildren,
 } from 'react'
-import type { Field } from './types'
+import { useCallback, useMemo } from 'react'
 
 import { useRefValue } from '~/hooks/common/use-ref-value'
 import { jotaiStore } from '~/lib/store'
 
 import { FormConfigContext, FormContext, useForm } from './FormContext'
+import type { Field } from './types'
 
 export const Form = (
   props: PropsWithChildren<
@@ -72,12 +72,11 @@ const FormInternal = (
 
       const fields = jotaiStore.get(fieldsAtom)
       for await (const [key, field] of Object.entries(fields)) {
-        const $ref = field.$ref
+        const {$ref} = field
         if (!$ref) continue
-        const value = $ref.value
-        const rules = field.rules
-        for (let i = 0; i < rules.length; i++) {
-          const rule = rules[i]
+        const {value} = $ref
+        const {rules} = field
+        for (const [i, rule] of rules.entries()) {
           try {
             const isOk = await rule.validator(value)
             if (!isOk) {

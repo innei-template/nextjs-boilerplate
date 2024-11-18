@@ -1,7 +1,8 @@
-import React, { useEffect, useMemo, useState } from 'react'
 import { atom, useStore } from 'jotai'
+import type { FC, JSX , PropsWithChildren } from 'react'
+import * as React from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Drawer } from 'vaul'
-import type { FC, PropsWithChildren } from 'react'
 
 export interface PresentSheetProps {
   content: JSX.Element | FC
@@ -47,7 +48,7 @@ export const PresentSheet: FC<PropsWithChildren<PresentSheetProps>> = (
     }
   }, [holderRef, store])
 
-  const Root = Drawer.Root
+  const {Root} = Drawer
 
   const overlayZIndex = zIndex - 1
   const contentZIndex = zIndex
@@ -60,10 +61,10 @@ export const PresentSheet: FC<PropsWithChildren<PresentSheetProps>> = (
           style={{
             zIndex: contentZIndex,
           }}
-          className="bg-base-100 fixed bottom-0 left-0 right-0 mt-24 flex max-h-[95vh] flex-col rounded-t-[10px] p-4"
+          className="bg-base-100 flex fixed inset-x-0 bottom-0 mt-24 max-h-[95vh] flex-col rounded-t-[10px] p-4"
         >
           {dismissible && (
-            <div className="mx-auto mb-8 h-1.5 w-12 flex-shrink-0 rounded-full bg-zinc-300 dark:bg-neutral-800" />
+            <div className="mx-auto mb-8 h-1.5 w-12 shrink-0 rounded-full bg-zinc-300 dark:bg-neutral-800" />
           )}
 
           {title && <Drawer.Title>{title}</Drawer.Title>}
