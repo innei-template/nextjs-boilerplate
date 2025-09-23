@@ -1,63 +1,54 @@
-import { m, useMotionTemplate, useMotionValue } from 'framer-motion'
-import type {
-  DetailedHTMLProps,
-  PropsWithChildren,
-  TextareaHTMLAttributes,
-} from 'react'
-import { forwardRef, useCallback } from 'react'
+'use client'
 
-import { useIsMobile } from '~/atoms'
+// Tremor Textarea [v1.0.0]
+import * as React from 'react'
+
 import { useInputComposition } from '~/hooks/common/use-input-composition'
-import { clsxm } from '~/lib/helper'
+import { cx, focusInput, hasErrorInput } from '~/lib/cn'
 
-export const TextArea = forwardRef<
-  HTMLTextAreaElement,
-  DetailedHTMLProps<
-    TextareaHTMLAttributes<HTMLTextAreaElement>,
-    HTMLTextAreaElement
-  > &
-    PropsWithChildren
->((props, ref) => {
-  const { className, children, ...rest } = props
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-  const handleMouseMove = useCallback(
-    ({ clientX, clientY, currentTarget }: React.MouseEvent) => {
-      const bounds = currentTarget.getBoundingClientRect()
-      mouseX.set(clientX - bounds.left)
-      mouseY.set(clientY - bounds.top)
-    },
-    [mouseX, mouseY],
-  )
-  const background = useMotionTemplate`radial-gradient(320px circle at ${mouseX}px ${mouseY}px, var(--spotlight-color) 0%, transparent 85%)`
-  const isMobile = useIsMobile()
-  const inputProps = useInputComposition(props)
+interface TextareaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  hasError?: boolean
+}
+
+const Textarea = ({
+  ref: forwardedRef,
+  className,
+  hasError,
+  ...props
+}: TextareaProps & { ref?: React.RefObject<HTMLTextAreaElement | null> }) => {
+  const inputProps = useInputComposition<HTMLTextAreaElement>(props)
   return (
-    <div
-      className="group relative h-full [--spotlight-color:hsl(var(--a)_/_0.05)]"
-      onMouseMove={handleMouseMove}
-    >
-      {!isMobile && (
-        <m.div
-          className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[150px] rounded-xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-          style={{ background }}
-          aria-hidden="true"
-        />
+    <textarea
+      ref={forwardedRef}
+      className={cx(
+        // base
+        'flex min-h-[4rem] w-full rounded-md border px-3 py-1.5 shadow-xs outline-hidden transition-colors sm:text-sm',
+        // text color
+        'text-text',
+        // border color
+        'border-border',
+        // background color
+        'bg-background',
+        // placeholder color
+        'placeholder:text-placeholder-text',
+        // disabled
+        'disabled:border-border disabled:bg-disabled-control disabled:text-disabled-text',
+        // focus
+        focusInput,
+        // error
+        hasError ? hasErrorInput : '',
+        // invalid (optional)
+        // "dark:aria-invalid:ring-red-400/20 aria-invalid:ring-2 aria-invalid:ring-red-200 aria-invalid:border-red-500 invalid:ring-2 invalid:ring-red-200 invalid:border-red-500"
+        className,
       )}
-      <textarea
-        ref={ref}
-        className={clsxm(
-          'h-full w-full resize-none bg-transparent',
-          'overflow-auto px-3 py-4',
-          'text-neutral-900/80 dark:text-slate-100/80',
-          className,
-        )}
-        {...rest}
-        {...inputProps}
-      />
-
-      {children}
-    </div>
+      tremor-id="tremor-raw"
+      {...props}
+      {...inputProps}
+    />
   )
-})
-TextArea.displayName = 'TextArea'
+}
+
+Textarea.displayName = 'Textarea'
+
+export { Textarea, type TextareaProps }

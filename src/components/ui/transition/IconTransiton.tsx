@@ -1,7 +1,7 @@
 'use client'
 
-import { useAnimationControls } from 'framer-motion'
-import type { FC,JSX  } from 'react'
+import { useAnimationControls } from 'motion/react'
+import type { FC, JSX } from 'react'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 

@@ -1,7 +1,6 @@
-import '~/styles/index.css'
+import './globals.css'
 
 import type { Viewport } from 'next'
-import { ToastContainer } from 'react-toastify'
 
 import { HydrationEndDetector } from '~/components/common/HydrationEndDetector'
 import { ScrollTop } from '~/components/common/ScrollTop'
@@ -109,7 +108,7 @@ export default async function RootLayout({
               <Root>{children}</Root>
             </div>
           </Providers>
-          <ToastContainer />
+
           <ScrollTop />
           <InitInClient />
         </body>

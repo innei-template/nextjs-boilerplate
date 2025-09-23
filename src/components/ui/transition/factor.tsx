@@ -5,8 +5,8 @@ import type {
   Spring,
   Target,
   TargetAndTransition,
-} from 'framer-motion'
-import { m } from 'framer-motion'
+} from 'motion/react'
+import { m } from 'motion/react'
 import type { FC, PropsWithChildren } from 'react'
 import { memo, useMemo } from 'react'
 

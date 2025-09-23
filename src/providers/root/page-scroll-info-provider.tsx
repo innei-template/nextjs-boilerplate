@@ -7,7 +7,7 @@ import { startTransition, useMemo, useRef } from 'react'
 
 import { setIsInteractive } from '~/atoms/is-interactive'
 import { throttle } from '~/lib/_'
-import { createAtomSelector } from '~/lib/atom'
+import { createAtomSelector } from '~/lib/jotai'
 
 const pageScrollLocationAtom = atom(0)
 const pageScrollDirectionAtom = atom<'up' | 'down' | null>(null)

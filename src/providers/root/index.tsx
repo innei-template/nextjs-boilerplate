@@ -1,8 +1,11 @@
 'use client'
 
-import { LazyMotion } from 'framer-motion'
+import { LazyMotion } from 'motion/react'
 import { ThemeProvider } from 'next-themes'
 import type { JSX, PropsWithChildren } from 'react'
+import { Toaster } from 'sonner'
+
+import { ModalContainer } from '~/components/ui/modal'
 
 import { ProviderComposer } from '../../components/common/ProviderComposer'
 import { DebugProvider } from './debug-provider'
@@ -31,6 +34,8 @@ export function Providers({ children }: PropsWithChildren) {
         <EventProvider key="viewportProvider" />
         <PageScrollInfoProvider key="PageScrollInfoProvider" />
         <DebugProvider key="debugProvider" />
+        <Toaster key="toaster" />
+        <ModalContainer />
       </ProviderComposer>
     </>
   )

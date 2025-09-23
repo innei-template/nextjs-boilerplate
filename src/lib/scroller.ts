@@ -1,6 +1,6 @@
 'use client'
 
-import { animateValue } from 'framer-motion'
+import { animateValue } from 'motion/react'
 
 import { microDampingPreset } from '~/constants/spring'
 

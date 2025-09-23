@@ -23,7 +23,7 @@ export const Form = (
   const { showErrorMessage = true, ...formProps } = props
   const fieldsAtom = useRefValue(() => atom({}))
   return (
-    <FormContext.Provider
+    <FormContext
       value={useRefValue(() => ({
         showErrorMessage,
         fields: fieldsAtom,
@@ -50,12 +50,12 @@ export const Form = (
         },
       }))}
     >
-      <FormConfigContext.Provider
+      <FormConfigContext
         value={useMemo(() => ({ showErrorMessage }), [showErrorMessage])}
       >
         <FormInternal {...formProps} />
-      </FormConfigContext.Provider>
-    </FormContext.Provider>
+      </FormConfigContext>
+    </FormContext>
   )
 }
 
@@ -72,10 +72,10 @@ const FormInternal = (
 
       const fields = jotaiStore.get(fieldsAtom)
       for await (const [key, field] of Object.entries(fields)) {
-        const {$ref} = field
+        const { $ref } = field
         if (!$ref) continue
-        const {value} = $ref
-        const {rules} = field
+        const { value } = $ref
+        const { rules } = field
         for (const [i, rule] of rules.entries()) {
           try {
             const isOk = await rule.validator(value)

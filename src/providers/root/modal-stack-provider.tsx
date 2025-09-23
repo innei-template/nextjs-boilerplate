@@ -1,10 +1,10 @@
 'use client'
 
-import * as Dialog from '@radix-ui/react-dialog'
-import type { Target, Transition } from 'framer-motion'
-import { AnimatePresence, m, useAnimationControls } from 'framer-motion'
 import { atom, useAtomValue, useSetAtom } from 'jotai'
+import type { Target, Transition } from 'motion/react'
+import { AnimatePresence, m, useAnimationControls } from 'motion/react'
 import { usePathname } from 'next/navigation'
+import { Dialog } from 'radix-ui'
 import type { FC, PropsWithChildren, SyntheticEvent } from 'react'
 import {
   createElement,
@@ -243,7 +243,7 @@ const Modal: Component<{
         <Dialog.Content asChild>
           <div
             className={clsxm(
-              'center flex fixed inset-0 z-[20]',
+              'center fixed inset-0 z-[20] flex',
               modalContainerClassName,
             )}
             onClick={clickOutsideToDismiss ? dismiss : noticeModal}
@@ -255,10 +255,10 @@ const Modal: Component<{
               animate={animateController}
               transition={modalTransition}
               className={clsxm(
-                'flex relative flex-col overflow-hidden rounded-lg',
+                'relative flex flex-col overflow-hidden rounded-lg',
                 'bg-slate-50/80 dark:bg-neutral-900/80',
                 'p-2 shadow-2xl shadow-stone-300 backdrop-blur-sm dark:shadow-stone-800',
-                'max-h-[70vh] min-w-[300px] max-w-[90vw] lg:max-h-[calc(100vh-20rem)] lg:max-w-[70vw]',
+                'max-h-[70vh] max-w-[90vw] min-w-[300px] lg:max-h-[calc(100vh-20rem)] lg:max-w-[70vw]',
                 'border border-slate-200 dark:border-neutral-800',
                 modalClassName,
               )}
@@ -275,7 +275,7 @@ const Modal: Component<{
 
               <Dialog.DialogClose
                 onClick={close}
-                className="absolute right-0 top-0 z-[9] p-5"
+                className="absolute top-0 right-0 z-[9] p-5"
               >
                 <CloseIcon />
               </Dialog.DialogClose>
